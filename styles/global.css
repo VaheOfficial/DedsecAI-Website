@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'HACKED';
+    src: url('/fonts/HACKED.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pixel Operator';
+    src: url('/fonts/PixelOperatorMono.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PF Tempesta Five Condensed';
+    src: url('/fonts/PFTempestaFiveCondensed.woff') format('woff2'),
+            url('/fonts/PFTempestaFiveCondensed.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-pf {
+    font-family: 'PF Tempesta Five Condensed', monospace;
+}
+
+button, a, [role="button"], [role="link"]{
+    cursor: url('/assets/icons/pointer24.png') 12 0, pointer;
+}
+
+@layer base {
+    .font-outline-2 {
+      text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    }
+    .font-outline-4 {
+      text-shadow: -4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000, 4px 4px 0 #000;
+    }
+    .font-outline-6 {
+      text-shadow: -6px -6px 0 #000, 6px -6px 0 #000, -6px 6px 0 #000, 6px 6px 0 #000;
+    }
+  }
+  
