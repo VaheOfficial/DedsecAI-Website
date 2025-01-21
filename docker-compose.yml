@@ -12,8 +12,8 @@ services:
       - /app/node_modules
       - /app/.next
     environment:
-      - NODE_ENV=production
-    command: sh -c "bun run build && bun run start"
+      - NODE_ENV=development
+    command: bun run dev
 
 volumes:
   node_modules:
