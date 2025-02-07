@@ -11,6 +11,9 @@ module.exports = {
           100: 'RGBA(255, 255, 255, 0.04)',
           white: '#FFFFFF',
         },
+        black: {
+          black: '#000000',
+        },
         primary: '#FFFFFF',
         secondary: {
           100: '#E2E2D5',
