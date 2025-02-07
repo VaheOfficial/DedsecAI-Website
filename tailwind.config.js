@@ -9,10 +9,7 @@ module.exports = {
       colors: {
         white: {
           100: 'RGBA(255, 255, 255, 0.04)',
-          white: '#FFFFFF',
-        },
-        black: {
-          black: '#000000',
+          DEFAULT: '#FFFFFF',  // Use DEFAULT for primary color shade
         },
         primary: '#FFFFFF',
         secondary: {
@@ -23,7 +20,8 @@ module.exports = {
           title: '#6d6d6d',
           body: '#dfdfdf',
           button: '#c4c4c4'
-        }
+        },
+        black: '#000000', // Flat structure for black
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
@@ -38,4 +36,3 @@ module.exports = {
   },
   plugins: ["prettier-plugin-tailwindcss"],
 };
-  
