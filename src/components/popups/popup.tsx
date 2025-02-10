@@ -1,7 +1,7 @@
 // popup.tsx
 import type { FC } from 'react';
 import { useState, useEffect, useCallback } from 'react';
-import { Icon } from '../svg/svg.container';
+import { Icon } from '../../components/svg/svg.container';
 
 interface PopupProps {
   title: string;
@@ -20,6 +20,8 @@ interface PopupProps {
     y: number;
   };
   onDrag: (x: number, y: number) => void;
+  onClick: () => void;
+  zIndex: number;
 }
 
 const Popup: React.FC<PopupProps> = ({
@@ -31,6 +33,8 @@ const Popup: React.FC<PopupProps> = ({
   onClose,
   position,
   onDrag,
+  zIndex,
+  onClick,
 }) => {
   const [dragging, setDragging] = useState(false);
   const [relX, setRelX] = useState(0);
@@ -84,8 +88,10 @@ const Popup: React.FC<PopupProps> = ({
         left: position.x,
         top: position.y,
         position: 'absolute',
+        zIndex,
       }}
       className="font-tempesta_five"
+      onMouseDown={onClick}
     >
       <div className="bg-popup-body border-2 border-[#000000] border-b-[#000000] border-r-[#000000] shadow-md w-[400px]">
         {/* Title bar (draggable area) */}

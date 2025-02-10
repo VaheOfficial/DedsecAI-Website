@@ -14,7 +14,7 @@ export const Icon: React.FC<IconProps> = ({
     width = 24,
     height = 24,
     className = '',
-    onClick, // Add onClick to destructuring
+    onClick,
 }) => {
     const SVGIcon = icons[icon];
 
@@ -30,8 +30,13 @@ export const Icon: React.FC<IconProps> = ({
             height={height}
             className={className}
             alt={`${icon} icon`}
-            onClick={onClick} // Add onClick handler
-            style={{ cursor: onClick ? "url('/assets/icons/pointer24.png') 12 0, pointer" : 'default' }}
+            onClick={onClick}
+            style={{ 
+                cursor: onClick ? "url('/assets/icons/pointer24.png') 12 0, pointer" : 'default',
+                width: `${width}px`,
+                height: `${height}px`,
+                objectFit: 'contain'
+            }}
         />
     );
 };

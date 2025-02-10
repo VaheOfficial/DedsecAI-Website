@@ -23,10 +23,12 @@ const Quoter = () => {
         fetchText();
     }, []);
     return (
-        <div className="flex flex-col inset-0 z-[-5] transform -translate-y-3/4 items-center w-[1500px]">
-            <h1 className="text-gray-300 text-[250px] font-HACKED font-outline-6 outline-none text-center">DedsecAI</h1>
-            <h1 className="absolute text-gray-300 text-[50px] font-tempesta_five font-outline-4 outline-none text-center max-w-[1200px] top-[75%]">
-            {text} - {author}
+        <div className="absolute flex-col justify-center items-center h-screen w-full isolate flex" style={{ top: '50%', transform: 'translateY(-50%)' }}>
+            <h1 className="text-gray-300 text-[250px] font-HACKED font-outline-6 outline-none text-center">
+            DedsecAI
+            </h1>
+            <h1 className="text-gray-300 text-[50px] font-tempesta_five font-outline-4 outline-none text-center max-w-[1200px]">
+            {text}
             </h1>
         </div>
     );

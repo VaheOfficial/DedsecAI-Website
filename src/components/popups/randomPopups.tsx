@@ -21,6 +21,7 @@ interface PopupData {
 
 const RandomPopups = () => {
   const [popups, setPopups] = useState<PopupData[]>([]);
+  const [activePopupId, setActivePopupId] = useState<number | null>(null);
 
   // Just some arrays of random values to pick from
 const popupPresets = [
@@ -30,42 +31,42 @@ const popupPresets = [
         icon: 'info',
         button: [{ text: '#LOL', onClick: () => {} }, { text: 'YES', onClick: () => {} }]
     },
-    {
-        title: 'Dedsec takeover',
-        message: 'Internet fucker has been successfull.',
-        icon: 'info',
-        button: [{ text: 'OK', onClick: () => {} }]
-    },
+    // {
+    //     title: 'Dedsec takeover',
+    //     message: 'Internet fucker has been successfull.',
+    //     icon: 'info',
+    //     button: [{ text: 'OK', onClick: () => {} }]
+    // },
     {
         title: 'Dedsec takeover',
         message: 'Tales of horror and suspence in the web of doom!!!',
         icon: 'info',
         button: [{ text: '#LOL', onClick: () => {} }]
     },
-    {
-        title: 'Dont trip over that leash',
-        message: 'The dog is not your friend, he is your master!',
-        icon: 'info',
-        button: [{ text: 'OK', onClick: () => {} }]
-    },
-    {
-        title: 'Dont trip over that leash',
-        message: 'warewolves unleashed #lol full moon motherf*****!!!!!!',
-        icon: 'info',
-        button: [{ text: '#WTF', onClick: () => {} }]
-    },
+    // {
+    //     title: 'Dont trip over that leash',
+    //     message: 'The dog is not your friend, he is your master!',
+    //     icon: 'info',
+    //     button: [{ text: 'OK', onClick: () => {} }]
+    // },
+    // {
+    //     title: 'Dont trip over that leash',
+    //     message: 'warewolves unleashed #lol full moon motherf*****!!!!!!',
+    //     icon: 'info',
+    //     button: [{ text: '#WTF', onClick: () => {} }]
+    // },
     {
         title: 'Unlink from your freedom',
         message: 'The internet is not your friend!',
         icon: 'info',
         button: [{ text: 'OK', onClick: () => {} }]
     },
-    {
-        title: "Weak a** passwords detected",
-        message: "You're not safe!",
-        icon: 'info',
-        button: [{ text: 'OK', onClick: () => {} }]
-    }
+    // {
+    //     title: "Weak a** passwords detected",
+    //     message: "You're not safe!",
+    //     icon: 'info',
+    //     button: [{ text: 'OK', onClick: () => {} }]
+    // }
 
 ];
 
@@ -76,7 +77,7 @@ const icons = popupPresets.map(p => p.icon);
 const buttons = popupPresets.map(p => p.button);
 
   const addRandomPopup = useCallback(() => {
-    if (popups.length >= 3) return; // Limit to 3 popups
+    if (popups.length >= 10) return; // Limit to 3 popups
 
     // Function to pick a random element from an array
     const getRandom = <T,>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)];
@@ -110,17 +111,21 @@ const buttons = popupPresets.map(p => p.button);
     );
   }, []);
 
+  const handlePopupClick = (id: number) => {
+    setActivePopupId(id); // Set the clicked popup as the active one
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       addRandomPopup();
-    }, 5000); // Add a popup every 5 seconds
+    }, 1000); // Add a popup every 5 seconds
 
     return () => clearInterval(interval);
   }, [addRandomPopup]);
 
   return (
     <div className="relative w-full h-screen">
-      {popups.map((popup) => (
+      {popups.map((popup, index) => (
         <Popup
           key={popup.id}
           title={popup.title}
@@ -137,6 +142,8 @@ const buttons = popupPresets.map(p => p.button);
           onClose={() => removePopup(popup.id)}
           position={popup.position}
           onDrag={(x, y) => updatePopupPosition(popup.id, x, y)}
+          onClick={() => handlePopupClick(popup.id)}
+          zIndex={activePopupId === popup.id ? 1000 : index + 1}
         />
       ))}
     </div>
